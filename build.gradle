@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    //id 'io.qameta.allure' version '2.11.2'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 group = 'com.shohoz.web'
@@ -45,5 +45,5 @@ tasks.named('clean') {
 
 test {
     useTestNG()
-    //finalizedBy 'allureReport'
+    finalizedBy 'allureReport'
 }
