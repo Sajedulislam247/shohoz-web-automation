@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    //id 'io.qameta.allure' version '2.11.2'
+}
+
+group = 'com.shohoz.web'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.microsoft.playwright:playwright:1.51.0'
+    implementation 'org.apache.commons:commons-lang3:3.18.0'
+    implementation 'org.slf4j:slf4j-simple:2.0.9'
+    implementation 'org.projectlombok:lombok:1.18.34'
+    implementation 'org.apache.logging.log4j:log4j-api:2.25.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.25.0'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.25.0'
+    implementation 'io.qameta.allure:allure-testng:2.32.0'
+
+    testImplementation 'io.qameta.allure:allure-testng:2.27.0'
+    testImplementation 'org.testng:testng:7.10.2'
+    testImplementation 'org.projectlombok:lombok:1.18.34'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.2'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+    testImplementation 'com.thedeanda:lorem:2.2'
+}
+
+tasks.register('playwright', JavaExec) {
+    classpath sourceSets.test.runtimeClasspath
+    mainClass = 'com.microsoft.playwright.CLI'
+}
+
+tasks.register('cleanAllure', Delete) {
+    description = 'Cleans Allure results and report directories.'
+    delete "/allure-results", "/allure-report"
+}
+
+tasks.named('clean') {
+    dependsOn 'cleanAllure'
+}
+
+test {
+    useTestNG()
+    //finalizedBy 'allureReport'
+}
