@@ -61,7 +61,7 @@ The project adheres to the POM pattern, separating test logic from page element 
 
 ### 5. Test Scenarios Covered
 
-1.Navigate to: https://www.shohoz.com/air-tickets 
+1.Navigate to: https://www.shohoz.com/air-tickets
 2. Click One way radio button
 3. Select Journey date as tomorrow
 4. Click Modify Search.
@@ -76,8 +76,24 @@ Execute the tests and generate the raw Allure results using the Gradle wrapper:
 ```
 
 
+### 7. Generating and Viewing Allure Reports
+After the tests are complete, use the Allure command line tool to process the results and open the interactive HTML report in your browser:
+AS FOR GRADLE v9.0.0 or higher
+Bash
+```
+iwr -useb get.scoop.sh | iex
 
+scoop install allure
 
+allure generate allure-results -o allure-report --clean
+
+allure open allure-report
+
+# Generates the report and serves it on a local web server (e.g., [http://0.0.0.0](http://0.0.0.0):port)
+
+```
+
+<img width="1365" height="602" alt="image" src="https://github.com/user-attachments/assets/e6d9cb63-788a-43b0-9678-f35bc074ac82" />
 
 
 
