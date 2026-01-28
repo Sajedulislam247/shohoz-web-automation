@@ -22,6 +22,7 @@ public class SearchTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void searchForOneWayFlightsShouldSucceed() {
         String date = DateUtil.getNextDayNumber(1);
+        int flightSelectionNumber =1;
         HomePage homePage = new HomePage(page);
         homePage
                 .navigateUrl(websiteUrl)
@@ -41,6 +42,9 @@ public class SearchTest extends BaseTest {
         }
         this.page.waitForLoadState(LoadState.DOMCONTENTLOADED);
         assertThat(homePage.getTimerLocator().first()).isVisible();
+
+        SearchPage searchPage = new SearchPage(page);
+        searchPage.clickBookTicketButton(flightSelectionNumber);
     }
 
 

@@ -22,6 +22,12 @@ public class SearchPage extends BasePage {
         return "";
     }
 
+    @Step("Click Book Flight")
+    public SearchPage clickBookTicketButton(int flightNumber) {
+        step(flightNumber+ "Selected for booking" ,()
+                -> page.locator(".btn_book_oneway")).nth(flightNumber).click();
+        return this;
+    }
 
 
 }
