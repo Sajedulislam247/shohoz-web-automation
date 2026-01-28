@@ -22,36 +22,6 @@ public class SearchPage extends BasePage {
         return "";
     }
 
-    public void navigateUrl(String url) {
-        step("Navigate to website :" + url, ()
-                -> page.navigate(url));
-    }
-
-    public SearchPage fillProductName(String productToSearch) {
-        step("Search keyword used as: " + productToSearch, ()
-                -> getSearchInputFieldLocator().fill(productToSearch)
-        );
-        return this;
-    }
-
-    public void clickSearchButton() {
-        step("Entered Search Button", ()
-                -> page.locator(".search-box__button--1oH7").click()
-        );
-    }
 
 
-    @Step("Search result header data")
-    public Locator getSearchResultHeaderLocator() {
-        return page.locator(".JrAyI");
-    }
-
-    public Locator getSearchResultCountLocator() {
-        return page.locator(".M4pDu");
-    }
-
-    @Step("Locate Search result input field")
-    public Locator getSearchInputFieldLocator() {
-        return page.locator("[type=\"search\"]").first();
-    }
 }
